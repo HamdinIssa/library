@@ -30,48 +30,11 @@ public class Book {
     String booksPublisher;
     @Column(name = "DESCRIPTION")
     String description;
+    @Column(name = "RELEASE_DATE")
+    String releaseDate;
+    @Column(name = "ADD_DATE")
+    String addDate;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "IMAGE_ID")
     Images image;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getBookName() {
-        return bookName;
-    }
-
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
-    }
-
-    public String getBooksAuthor() {
-        return booksAuthor;
-    }
-
-    public void setBooksAuthor(String booksAuthor) {
-        this.booksAuthor = booksAuthor;
-    }
-
-    public String getBooksPublisher() {
-        return booksPublisher;
-    }
-
-    public void setBooksPublisher(String booksPublisher) {
-        this.booksPublisher = booksPublisher;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
 }
