@@ -8,8 +8,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
 @Entity
+@Table(name = "Buhishta Xwendine Images")
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Data
 public class Images {
 
 	@Id
@@ -24,20 +31,6 @@ public class Images {
 	@JoinColumn(name = "IMAGE_NAME")
 	private Book book;
 
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getImageName() {
-		return imageName;
-	}
-
-	public void setImageName(String imageName) {
-		this.imageName = imageName;
-	}
 
 }
