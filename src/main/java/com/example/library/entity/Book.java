@@ -1,11 +1,6 @@
 package com.example.library.entity;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.experimental.FieldDefaults;
-
-
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,9 +9,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
 @Entity
-@Table(name = "BOOK")
+@Table(name = "Buhishta Xwendine Books")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 public class Book {
@@ -25,27 +23,17 @@ public class Book {
     @Column(name = "ID")
     Integer id;
     @Column(name = "BOOK_NAME")
-     String bookName;
-    @Column(name = "BOOK_SUBNAME")
-    String bookSubname;
-    @Column(name = "BOOK_SERIAL_NAME")
-    String serialName;
-    @Column(name = "BOOKS_AUTHOR")
+    String bookName;
+    @Column(name = "BOOK_AUTHOR")
     String booksAuthor;
-    @Column(name = "BOOKS_PUBLISHER")
+    @Column(name = "BOOK_PUBLISHER")
     String booksPublisher;
     @Column(name = "DESCRIPTION")
     String description;
-    @Column(name = "ISBN")
-    String isbn;
-  
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "IMAGE_ID")
     Images image;
 
- 
-
-  
     public Integer getId() {
         return id;
     }
@@ -60,22 +48,6 @@ public class Book {
 
     public void setBookName(String bookName) {
         this.bookName = bookName;
-    }
-
-    public String getBookSubname() {
-        return bookSubname;
-    }
-
-    public void setBookSubname(String bookSubname) {
-        this.bookSubname = bookSubname;
-    }
-
-    public String getSerialName() {
-        return serialName;
-    }
-
-    public void setSerialName(String serialName) {
-        this.serialName = serialName;
     }
 
     public String getBooksAuthor() {
@@ -102,11 +74,4 @@ public class Book {
         this.description = description;
     }
 
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
 }
