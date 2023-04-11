@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Save Book</title>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+<div class="container">
+    <h3>Book Directory</h3>
+    <hr>
+    <p class="h4 mb-4">Save Book</p>
+    <form  th:action="@{/books/save}"
+          th:object="${books}" method="POST">
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}" />
+
+        <input type="text" th:field="*{bookName}"
+               class="form-control mb-4 col-4" placeholder="Book Name" />
+               
+               <!-- <input type="text" field="*{content}" name="content">
+
+ -->
+ <!-- <form class="form-horizontal" th:object="${book}" th:action="@{/books}" method="post">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="hidden" class="form-control" th:field="*{id}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    
+                        <label class="col-sm-2 control-label">Name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" th:field="*{name}">
+                        </div>
+                </div>
+                <div class="form-group">
+                    
+                    <label class="col-sm-2 control-label">Author:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{author}">
+                    </div>
+            </div>
+            <div class="form-group">
+                    
+                <label class="col-sm-2 control-label">PublishYear:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{publishYear}">
+                </div>
+        </div>
+
+    <div class="form-group">
+                    
+        <label class="col-sm-2 control-label">Price:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" th:field="*{price}">
+        </div>
+</div>
+
+<div class="form-group">
+                    
+    <div class="col-sm-2">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+    
+</div>
+            </form> -->
+
+        <input type="text" th:field="*{bookSubname}"
+               class="form-control mb-4 col-4" placeholder="Book Subname" />
+
+        <input type="text" th:field="*{serialName}"
+               class="form-control mb-4 col-4" placeholder="Serial Name"/> 
+        <input type="text" th:field="*{booksAuthor}"
+               class="form-control mb-4 col-4" placeholder="Book's Author"/>
+
+        <input type="text" th:field="*{booksPublisher}"
+               class="form-control mb-4 col-4" placeholder="Publisher"/>
+
+        <input type="text" th:field="*{description}"
+               class="form-control mb-4 col-4" placeholder="Description"/>
+
+        <input type="text" th:field="*{isbn}"
+               class="form-control mb-4 col-4" placeholder="ISBN">
+               <!-- <section class="my-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 mx-auto">
+                            <h2>Upload Image Example</h2>
+                            <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
+                            <form method="post" th:action="@{/upload/image}" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <input type="file" name="image" accept="image/*" class="form-control-file">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Upload image</button>
+                            </form>
+                            <span th:if="${msg != null}" th:text="${msg}"></span>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+          
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+
+    <hr>
+</div>
+<div class="container">
+
+    <th:block th:if="${session.msg}">
+        <p class="text-center fs-4 text-success">[[${session.msg}]]</p>
+        <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+    </th:block>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-4">
+
+            <form action="imageUpload" enctype="multipart/form-data"
+                method="post">
+                <div class="mb-3">
+                    <input type="file" name="img" class="form-control">
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-primary">Upload</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
+
